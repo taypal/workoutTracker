@@ -6,8 +6,6 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-app.use(morgan());
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -19,6 +17,7 @@ mongoose.connect("mongod://localhost/workout", {
 });
 
 app.use(require("./routes/htmlroutes.js"));
+app.use(require("./routes/apiroutes.js"));
 
 app.listen(PORT, () => {
     console.log("App running on http://localhost:" + PORT);
